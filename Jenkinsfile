@@ -1,13 +1,14 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "your_docker_registry/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+        DOCKER_IMAGE = "vedooo/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+        KUBECONFIG = '/var/jenkins_home/.kube/config'
     }
     stages {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git 'https://github.com/your-username/your-repo.git'
+                git 'https://github.com/Vedooo/hello-world-api.git'
             }
         }
         stage('Build Docker Image') {
@@ -33,7 +34,7 @@ pipeline {
                     sh "sed -i 's|image: .*$|image: ${DOCKER_IMAGE}|' k8s/deployment.yaml"
                     
                     // Apply the updated deployment.yaml to the Kubernetes cluster
-                    sh "kubectl apply -f k8s/deployment.yaml --namespace your-namespace"
+                    sh "kubectl apply -f k8s/deployment.yaml --namespace dev"
                 }
             }
         }
