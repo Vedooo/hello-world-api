@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "vedooo/${env.JOB_NAME}:${env.BUILD_NUMBER}"
+        DOCKER_IMAGE = "vedooo/${env.JOB_NAME}:dev-1"
         KUBECONFIG = '/var/jenkins_home/.kube/config'
     }
     stages {
