@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     // Push the Docker image to the registry
-                    sh "docker login -u vedooo -p Senben12345..
+                    sh "docker login -u vedooo -p Senben12345.."
                     sh "docker push ${DOCKER_IMAGE}"
                 }
             }
