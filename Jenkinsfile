@@ -8,8 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git clone 'https://github.com/Vedooo/hello-world-api.git'
-                git checkout main
+                git 'https://github.com/Vedooo/hello-world-api.git'
             }
         }
         stage('Build Docker Image') {
