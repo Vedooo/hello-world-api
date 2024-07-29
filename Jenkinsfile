@@ -30,10 +30,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    // Update the deployment.yaml file with the new image tag
                     sh "sed -i 's|image: .*\$|image: ${DOCKER_IMAGE}|' k8s/deployment.yaml"
-                    
-                    // Apply the updated deployment.yaml to the Kubernetes cluster
                     sh "kubectl apply -f k8s/deployment.yaml --namespace dev"
                 }
             }
